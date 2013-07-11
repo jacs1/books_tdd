@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: books_tdd_development
+  pool: 5
+  host: localhost
+  username: dylanoshea
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: books_tdd_test
+  pool: 5
+  host: localhost
+  username: dylanoshea
+  password:
