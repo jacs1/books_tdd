@@ -15,7 +15,7 @@ require 'spec_helper'
 
 #this class must be a real class
 describe Author do
-  subject(:author) { Author.create(first_name: 'Bob', last_name: 'Bobson', bio: 'he is an author', age: 35) }
+  subject(:author) { FactoryGirl.create(:author) }
 
   it 'exists' do
     author = Author.create()
@@ -27,11 +27,15 @@ describe Author do
     it 'has a first name' do
       author.first_name.should eq 'Bob'
     end
+
+
+    its(:first_name) { should eq 'Bob' }
+
     it 'has a last name' do
       author.last_name.should eq 'Bobson'
     end
     it 'has a bio' do
-      author.bio.should eq 'he is an author'
+      author.bio.should eq 'He is an author'
     end
     it 'has an age' do
       author.age.should eq 35
