@@ -23,23 +23,11 @@ describe Author do
   end
 
   context 'attributes' do
-
-    it 'has a first name' do
-      author.first_name.should eq 'Bob'
-    end
-
-
-    its(:first_name) { should eq 'Bob' }
-
-    it 'has a last name' do
-      author.last_name.should eq 'Bobson'
-    end
-    it 'has a bio' do
-      author.bio.should eq 'He is an author'
-    end
-    it 'has an age' do
-      author.age.should eq 35
-    end
+    let(:factory_author){ FactoryGirl.create(:author) }
+    its(:first_name) { should eq factory_author.first_name }
+    its(:last_name) { should eq factory_author.last_name }
+    its(:bio) { should eq factory_author.bio }
+    its(:age) { should eq factory_author.age }
   end
 
   context 'validations' do
