@@ -15,7 +15,13 @@ class Author < ActiveRecord::Base
   attr_accessible :age, :bio, :first_name, :last_name
 
   validates_presence_of :first_name
-
   validates_numericality_of :age
+
+  has_many :books
+
+  def  buy_book_and_rename(book)
+    self.books << book
+    book.update_attribute(:title, 'Oreilly')
+  end
 
 end

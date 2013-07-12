@@ -24,6 +24,7 @@ describe Author do
 
   context 'attributes' do
     let(:factory_author){ FactoryGirl.create(:author) }
+    it {should_not be factory_author}
     its(:first_name) { should eq factory_author.first_name }
     its(:last_name) { should eq factory_author.last_name }
     its(:bio) { should eq factory_author.bio }
@@ -31,7 +32,6 @@ describe Author do
   end
 
   context 'validations' do
-
     context 'with valid attributes' do
       it 'is valid' do
         author.should be_valid
@@ -39,18 +39,40 @@ describe Author do
     end
 
     context 'with invalid attributes' do
-      it 'must have a first name' do
-        author.update_attributes(first_name: nil)
-        author.should_not be_valid
-      end
+      it { should validate_presence_of(:first_name) }
+      it { should validate_numericality_of(:age) }
+    end
+  end
 
-      it 'must have a numerical age' do
-        author.update_attributes(age: 'hello')
-        author.should_not be_valid
+  context 'associations' do
+    it { should have_many(:books) }
+  end
+
+  context 'instance methods' do
+    context '.buy_book_and_rename' do
+      let(:book) { Book.create }
+      before do
+        subject.buy_book_and_rename(book)
+      end
+      it 'owns the book' do
+        book.should be_in(subject.books)
+      end
+      it 'changes the title' do
+        book.title.should eq 'Oreilly'
       end
     end
+  end
+
+  context 'class methods' do
 
   end
 
-
 end
+
+
+
+
+
+
+
+

@@ -17,7 +17,7 @@ FactoryGirl.define do
     first_name Faker::Name.first_name
     last_name  Faker::Name.last_name
     bio             Faker::Lorem.paragraph(4)
-    age             rand(120)
+    age            35
   end
 
 end
