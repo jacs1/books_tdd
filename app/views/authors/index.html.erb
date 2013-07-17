@@ -1,0 +1,8 @@
+Authors
+
+<%= flash[:notice] %>
+
+<%= @author.each do |a|%>
+  <p><%= a.first_name %>
+  <%= a.last_name %></p>
+<% end %>

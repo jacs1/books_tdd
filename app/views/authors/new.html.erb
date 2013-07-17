@@ -1,0 +1,22 @@
+<h1>New Author</h1>
+
+<%= flash[:error] %>
+
+  <%= form_for @author do |f| %>
+
+ <p> <%= f.label :first_name %>
+  <%= f.text_field :first_name %></p>
+
+ <p> <%= f.label :last_name %>
+  <%= f.text_field :last_name %></p>
+
+  <p><%= f.label :age %>
+  <%= f.number_field :age%></p>
+
+  <p><%= f.label :bio %>
+  <%= f.text_field :bio %></p>
+
+  <%= f.submit %>
+
+
+<% end %>

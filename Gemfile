@@ -25,4 +25,10 @@ end
 group :test do
   gem 'shoulda-matchers'
   gem 'rspec-rails'
+
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
 end
